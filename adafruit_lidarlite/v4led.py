@@ -120,11 +120,6 @@ class LIDARLiteV4LED:
         self.wait_while_busy()
         # Get the reading
         dist = self._read_reg(_REG_DISTANCE_LOW, 2)
-        # Check the status
-        print("Status: 0x{0:X}".format(self.status))
-        # if self._status & (STATUS_SIGNAL_OVERFLOW | STATUS_REF_OVERFLOW | STATUS_DC_NOISE_BIAS_ERROR):
-        #     raise RuntimeError("Measurement failure")
-        # print("Read {0}".format(dist[1] << 8 | dist[0]))
         return dist[1] << 8 | dist[0]
 
     @property
