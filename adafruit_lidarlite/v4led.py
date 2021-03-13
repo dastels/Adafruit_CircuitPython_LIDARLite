@@ -44,7 +44,6 @@ _REG_DISTANCE_LOW = const(0x10)
 _REG_CP_VER_LOW = const(0x72)
 _REG_HARDWARE_VER = const(0xE1)
 
-_CMD_RESET = const(0)
 _CMD_DISTANCENOBIAS = const(3)
 _CMD_DISTANCEWITHBIAS = const(4)
 
