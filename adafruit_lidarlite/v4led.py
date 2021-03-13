@@ -6,9 +6,9 @@
 `adafruit_lidarlite`
 ====================================================
 
-A CircuitPython & Python library for Garmin LIDAR Lite sensors over I2C
+A CircuitPython & Python library for Garmin LIDAR Lite V4 LED over I2C
 
-* Author(s): ladyada
+* Author(s): ladyada, dastels
 
 Implementation Notes
 --------------------
