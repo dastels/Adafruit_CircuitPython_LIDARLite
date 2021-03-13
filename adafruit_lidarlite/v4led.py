@@ -41,6 +41,8 @@ _REG_STATUS = const(0x01)
 _REG_ACQUISITION_COUNT = const(0x05)
 _REG_QUICK_TERMINATION = const(0xE5)
 _REG_DISTANCE_LOW = const(0x10)
+_REG_CP_VER_LOW = const(0x72)
+_REG_HARDWARE_VER = const(0xE1)
 
 _CMD_RESET = const(0)
 _CMD_DISTANCENOBIAS = const(3)
@@ -137,6 +139,18 @@ class LIDARLiteV4LED:
         with self.i2c_device as i2c:
             i2c.write_then_readinto(buf, buf)
         return buf[0]
+
+    @property
+    def firmware_version(self):
+        """Fetch the coprocessor firmware version"""
+        ver = self._read_reg(_REG_CP_VER_LOW, 2)
+        return ver[1] << 8 | ver[0]
+
+    @property
+    def hardware_version(self):
+        """Fetch the board hardware version"""
+        ver = self._read_reg(_REG_HARDWARE_VER, 1)
+        return ver[0]
 
     def wait_while_busy(self):
         while self.status & STATUS_BUSY:
